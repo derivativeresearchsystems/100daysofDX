@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en-US">
     {% include head.html %}
     <body>
         {% include svg-icons.html %}
@@ -8,11 +8,17 @@
 
             <article role="article" id="scroll" class="post-content" itemprop="articleBody">
                 {{ content }}
+                <hr/>
+                <h2>Some more to read from 100 Days DX</h2>
+                <ul>
+                {% include related.html %}
+                </ul>
             </article>
-
+            
             {% include share.html %}
-            {% include author.html %}
             {% include comments.html %}
+            {% include author.html %}
+            {% include platformoftrust.html %}
             {% include footer.html %}
         </section>
     </body>

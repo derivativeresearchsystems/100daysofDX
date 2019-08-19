@@ -3,7 +3,48 @@ layout: default
 ---
 
 <main id="scroll" class="home" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
-    {% for post in site.posts %}
+    
+    <div style="margin: auto; text-align: center; width: 80%;padding-top:20px;padding-bottom:20px;">
+        <h2>Progress of 100 Days of DX</h2>
+        {% assign wcount = 0 %}
+        {% for post in site.posts %}
+            {% assign article_words = post.content | number_of_words %}
+            {% assign wcount = wcount | plus:article_words %}
+
+        {% endfor %}
+        {% assign postcount =  site.posts | size %}
+        {% assign perpost =  wcount | divided_by: postcount %}
+        {% assign totalwords =  perpost | times: 100 %}
+        {% assign pages =  totalwords | divided_by: 300 %}
+
+        <div style="text-align: left; margin: 2px auto; font-size: 0px; width:50%; line-height: 0px; background: #C6C9C9; overflow: hidden; ">
+            <div style="font-size: 0px; line-height: 0px; height: 15px; min-width: 0%; max-width: {{ site.posts | size }}%; width: {{ site.posts | size }}%; background: #ff5600; "></div>
+        </div>
+        
+        <div style="font-size: 14pt;margin-top:20px;line-height: 2.8em;"><h2>
+            <!-- <span style="font-size: 18px;">{{ "now" | date: "%Y/%m/%d" }} </span> -->
+            <span style="border: solid 1px #eee;padding:5px;margin:5px; background-color: #f6f6f6;">{{ site.posts | size }}% </span>
+            <span style="font-size: 18px;"> done with </span>
+            <span style="border: solid 1px #eee;padding:5px;margin:5px;  background-color: #f6f6f6;"> {{ wcount }} </span> 
+            <span style="font-size: 18px;">  words of wisdom. Expected word count around </span>
+            <span style="border: solid 1px #eee;padding:5px;margin:5px;  background-color: #f6f6f6;">{{ totalwords }}</span>
+            <span style="font-size: 18px;">  which is equivalent of a </span>
+            <span style="border: solid 1px #eee;padding:5px;margin:5px;  background-color: #f6f6f6;"> {{ pages }} </span> 
+            <span style="font-size: 18px;"> page book.</span>
+            </h2></div></div>
+        <div style="width: 100%; min-height:50px; background-color: #eee; margin: auto;text-align: center;padding:30px;">
+            <p style="font-size: 24px;margin: auto;margin-left:40px; margin-right:40px;margin-bottom:30px;">Even if the #100daysdx content would be mediocre, it is the biggest open resource on Developer eXperience so far.</p>
+            <a href="https://www.patreon.com/bePatron?u=22486729" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+            
+        </div>
+        
+        
+
+    {% for post in paginator.posts %}
+        {% assign post_words = 0 %}    
+        {% assign post_words = post.content | number_of_words %}
+        {% assign readtime = post_words | divided_by: 200 | round %}
+
         <article role="article" class="post-item" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
                 <a class="datetime" href="{{ post.url | prepend: site.baseurl }}">
                     <meta itemprop="datePublished" content="{{post.date}}">
@@ -15,20 +56,57 @@ layout: default
                             {{ post.date | date: "%B %Y" }}
                         </span>
                     </time>
+                    
                 </a>
+                
                 <div class="content">
+                    <div>
                     <a href="{{ post.url | prepend: site.baseurl }}"><h2 class="post-title" itemprop="name">{{ post.title }}</h2></a>
-                    <p class="description">
-                        {{ post.content | strip_html | truncatewords:40 }}
-                        <a href="{{ post.url | prepend: site.baseurl }}" class="link">Read more about {{post.title}}</a>
-                    </p>
-
-                    <div class="tags">
+                    
+                    <a href="{{ post.url | prepend: site.baseurl }}"><img src="{{ post.image}}" alt="{{ post.title}}" style="margin-bottom:20px;width:300px;float:left;margin:30px;margin-left:0px;margin-top:0px;border-radius:10px;"/></a>
+                    
+                    {% if post.audio %}
+                        <p class="description">
+                            {{ post.content | strip_html | truncate:360 }}
+                        </p>
+                    {% else %}
+                        <p class="description">
+                            {{ post.content | strip_html | truncate:300 }}
+                        </p>
+                    {% endif %}
+                    </div>
+                    {% if post.audio %}
+                        <a href="{{ post.audio }}"><img src="/assets/img/button-mp3.png" style="padding-bottom:0px;width:300px;margin-top:0px;border-radius:10px;"/></a>
+                    {% endif %}
+                    
+                   <!--  <div style="width: 100%;display: block;"><p><a href="{{ post.url | prepend: site.baseurl }}" class="link">Read more about {{post.title}}</a></p></div> -->
+                    <div class="tags" style="width: 100%;display: block;"> 
+                        <p class="description"> 
                         {% for tag in post.tags %}
                             <a href="{{ site.baseurl }}/tags/#{{tag | slugify }}">{{ tag }}</a>
                         {% endfor %}
+                        </p>
                     </div>
+                    
                 </div>
         </article>
     {% endfor %}
+    <!-- Pagination links -->
+<div class="pagination">
+        {% if paginator.previous_page %}
+          <a href="{{ paginator.previous_page_path }}" class="previous">
+            Previous
+          </a>
+        {% else %}
+          <span class="previous"><< Previous </span>
+        {% endif %}
+        <span class="page_number ">
+          Page: {{ paginator.page }} of {{ paginator.total_pages }}
+        </span>
+        {% if paginator.next_page %}
+          <a href="{{ paginator.next_page_path }}" class="next"> Next >> </a>
+        {% else %}
+          <span class="next ">Next</span>
+        {% endif %}
+      </div>
 </main>

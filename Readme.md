@@ -1,118 +1,66 @@
-## Will Jekyll Template - [Demo](http://willianjusten.com.br/will-jekyll-template)
+# Website for DX
 
-![Screenshot](screenshot.png)
+![100 Days DX blog cover](https://raw.githubusercontent.com/kyyberi/100daysofDX/gh-pages/assets/img/blog.png)
 
-This is a simple and minimalist template for Jekyll designed for developers that want to write blog posts but don't want to care about frontend stuff.
+The site is a collection of developer experience posts - short posts. It is hosted as gh-pages and served via 100daysdx.com. The site might stay alive after 100 posts have been reached. If it proves to be valuable - I'll find a way to keep it alive. 
 
-The Theme features:
+## Suggest topics 
 
-- Gulp
-- Stylus (Jeet, Rupture, Kouto Swiss)
-- Smoothscroll
-- Live Search
-- Offcanvas Menu
-- SVG icons
-- Very very small and fast!
-- Shell Script to create posts
-- Tags page
-- Series page
-- About Me page
-- Feed RSS
-- Sitemap.xml
-- Color Customization
-- Info Customization
+You can suggest topics for me by raising an issue. I will not promise to write about your suggestion, but I promise to consider it thoroughly. 
 
-## Basic Setup
+[New idea for a post - raise an issue!](https://github.com/kyyberi/100daysofDX/issues/new)
 
-1. [Install Jekyll](http://jekyllrb.com)
-2. Fork the [Will Jekyll Template](https://github.com/willianjusten/will-jekyll-template/fork)
-3. Clone the repo you just forked.
-4. Edit `_config.yml` to personalize your site.
-5. Check out the sample posts in `_posts` to see examples for assigning categories and tags, and other YAML data.
-6. Read the documentation below for further customization pointers and documentation.
-7. **Remember to compile your assets files with Gulp.**
 
-## Site and User Settings
+## Support via Patreon
 
-You have to fill some informations on `_config.yml` to customize your site.
+This is a freetime project and I spend significant amount of my time in it. If you see value in the site, you can support the effort via [Patreon](https://www.patreon.com/100daysdx). 
 
-```
-# Site settings
-description: A blog about lorem ipsum dolor sit amet
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://localhost:3000" # the base hostname & protocol for your site 
+## Contribute a post
 
-# User settings
-username: Lorem Ipsum
-user_description: Anon Developer at Lorem Ipsum Dolor
-user_title: Anon Developer
-email: anon@anon.com
-twitter_username: lorem_ipsum
-github_username:  lorem_ipsum
-gplus_username:  lorem_ipsum
-disqus_username: lorem_ipsum
-```
+To contribute a post, do the following:
 
-**Don't forget to change your baseurl before build your site!**
+### Create issue
 
-## Color customization
+- Add issue to issue list with label "Topic-idea"
+- Wait until it has been approved (label "Approved" appears to it). In the comment you'll get the day number. The day number indicates when it will be published. You'll need the number in branching. See below. 
 
-All color variables are in `src/styl/variable`. To change the main color, just set the new value at `main` assignment. Another colors are for texts and the code background color.
+### Work on the content in branch
 
-## Creating posts
+- Clone the repository
+- Make a branch and follow naming pattern "feature/dayX" in which the "X" is the number of the post given to you in idea approval. See above. 
+- Add your post to "_posts" folder and follow the naming pattern yyyy-mm-dd-X.md, in which the "X" is the number of the post given to you in idea approval. 
+- Take a screenshot of the post header containing the header and description text, not the date. Make the picture 600px wide. Name that image as "blog.png". Make sure the frontmatter image field points to right folder ```image: "/assets/img/dayX/blog.png"```
 
-You can use the `initpost.sh` to create your new posts. Just follow the command:
-
-```
-./initpost.sh -c Post Title
-```
-
-The new file will be created at `_posts` with this format `date-title.md`.
-
-## Front-matter 
-
-When you create a new post, you need to fill the post information in the front-matter, follow this example:
+Example frontmatter:
 
 ```
 ---
 layout: post
-title: "How to use"
-date: 2015-08-03 03:32:44
-image: '/assets/img/post-image.png'
-description: 'First steps to use this template'
+comments: true
+title: "#6 - Show the result I can create with your API as a selling argument"
+date: 2019-07-19 03:32:44
+image: '/assets/img/day6/blog.png'
+audio: "https://s3.us-east-2.amazonaws.com/100daysdx/9c27622d-ed5c-4b30-835c-7e479ac37076.mp3"
+description: "I am not going to buy your API product unless I can try it and see the results if they have any value."
 tags:
-- jekyll 
-- template 
+- DX 
+- 100DaysDX
+- value proposition
+- text-to-speech
+- amazon
+- google
+- freemium
 categories:
-- I love Jekyll
-twitter_text: 'How to install and use this template'
+- DX
+- 100DaysDX
+twitter_text: "I'm not going to buy your API product unless I can try it and see the results if they have any value."
 ---
 ```
+- Autogenerate mp3 from the content if you can. I use Polly from Amazon for it. Don't worry if you don't have the time for it. It can be added later too. In that case, just remove the ```audio:``` line. 
+- Pictures of the post are all added to /assest/img/ folder in which you should create a folder "dayX" in which the "X" is the number of the post given to you in idea approval. Just look at the previous posts and follow the lead. 
+- Since most of the posts are written by Jarkko Moilanen, but you should get the credit for it, you can add your details (name etc) in the beginning or the end. That way all know you've written it!  
+### Make a pull request 
 
-## Running the blog in local
-
-In order to compile the assets and run Jekyll on local you need to follow those steps:
-
-- Install [NodeJS](https://nodejs.org/)
-- Run `npm install` 
-- Run `gulp`
-
-## Questions
-
-Having a problem getting something to work or want to know why I setup something in a certain way? Ping me on Twitter [@willian_justen](https://twitter.com/willian_justen) or file a [GitHub Issue](https://github.com/willianjusten/will-jekyll-template/issues/new).
-
-## Donation
-
-If you liked my work, buy me a coffee <3
-
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UTMFZUHX6EUGE)
-
-## License
-
-This theme is free and open source software, distributed under the The MIT License. So feel free to use this Jekyll theme on your site without linking back to me or using a disclaimer.
-
-If you’d like to give me credit somewhere on your blog or tweet a shout out to [@willian_justen](https://twitter.com/willian_justen), that would be pretty sweet.
-
-
+- When you are done with the post, add "Ready" label to your issue. Then make a pull request. 
 
 

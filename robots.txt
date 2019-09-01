@@ -1,3 +1,4 @@
-# robotstxt.org/
-
 User-agent: *
+Allow: /
+
+Sitemap: https://100daysdx.com/sitemap.xml

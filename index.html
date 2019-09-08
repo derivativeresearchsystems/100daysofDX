@@ -17,6 +17,16 @@ layout: default
         {% assign totalwords =  perpost | times: 100 %}
         {% assign pages =  totalwords | divided_by: 300 %}
 
+
+        {% assign totalw = '' %}
+        {% for post in site.posts %}
+            {% assign article_words = post.content | number_of_words %}
+            {% assign totalw = totalw | append: article_words | append: '<br/>' %}
+            
+        {% endfor %}
+        <!-- <p>{{ totalw }}</p> -->
+
+
         <div style="text-align: left; margin: 2px auto; font-size: 0px; width:50%; line-height: 0px; background: #C6C9C9; overflow: hidden; ">
             <div style="font-size: 0px; line-height: 0px; height: 15px; min-width: 0%; max-width: {{ site.posts | size }}%; width: {{ site.posts | size }}%; background: #ff5600; "></div>
         </div>

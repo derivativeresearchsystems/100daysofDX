@@ -21,10 +21,10 @@ layout: default
         {% assign totalw = '' %}
         {% for post in site.posts reversed %}
             {% assign article_words = post.content | number_of_words %}
-            {% assign totalw = totalw | append: article_words | append: '<br/>' %}
+            {% assign totalw = totalw | append: article_words  | append: ', ' |  append: post.title | append: '<br/>' %}
             
         {% endfor %}
-        <!-- <p>{{ totalw }}</p> -->
+         <!-- <p>{{ totalw }}</p> -->
 
 
         <div style="text-align: left; margin: 2px auto; font-size: 0px; width:50%; line-height: 0px; background: #C6C9C9; overflow: hidden; ">

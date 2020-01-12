@@ -51,7 +51,7 @@ layout: default
         
         <h2>List of posts:</h2>
         <ul>
-    {% for post in posts %}
+    {% for post in paginator.posts %}
         <li>{{ post.title }}</li>
         </ul>
     {% endfor %}

@@ -51,11 +51,10 @@ layout: default
         
         <h2>List of posts</h2>
         <table>
-    {% for post in paginator.posts %}
-        <tr><td>{{ post.title }}</td></tr>
+        {% for post in paginator.posts %}
+            <tr><td>{{ post.title }}</td></tr>
+        {% endfor %}
         </table>
-    {% endfor %}
-    
     {% for post in paginator.posts %}
         {% assign post_words = 0 %}    
         {% assign post_words = post.content | number_of_words %}

@@ -48,14 +48,14 @@ layout: default
             <a href="https://dxdoctor.net" style="color:#ff4300;font-size: 1.5em;">Check out Doctor of Developer eXperience!</a>
         </div>
         
-        <!-- 
+        
         <h2>List of posts</h2>
-        <ul>
+        <table>
     {% for post in paginator.posts %}
-        <li>{{ post.title }}</li>
-        </ul>
+        <tr><td>{{ post.title }}</td></tr>
+        </table>
     {% endfor %}
-    -->
+    
     {% for post in paginator.posts %}
         {% assign post_words = 0 %}    
         {% assign post_words = post.content | number_of_words %}
